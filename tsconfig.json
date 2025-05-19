@@ -1,3 +1,8 @@
 {
-  "extends": "astro/tsconfigs/base"
+  "extends": "astro/tsconfigs/base",
+  "exclude": ["dist", "node_modules", ".vscode", ".codesandbox"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+  }
 }

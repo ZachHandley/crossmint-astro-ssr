@@ -1,9 +1,8 @@
 ---
 // Import styles
 import "../../styles/global.css";
-import SiteMetadata from "~components/global/SiteMetadata.astro";
-import CrossmintProviders from "~react/providers/CrossmintProvider.tsx";
-import MusicPlayerGlobal from "~/components/global/MusicPlayerGlobal.astro";
+import { ClientRouter } from "astro:transitions";
+import CrossmintProviders from "../react/CrossmintProvider.tsx";
 
 // Props interface
 interface Props {
@@ -20,12 +19,17 @@ const {
 
 <html lang="en">
   <head>
-    <SiteMetadata title={title} description={description} />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <ClientRouter />
   </head>
-  <body class="bg-black relative w-screen overflow-x-hidden font-[Halyard Display]">
+  <body
+    class="bg-black relative w-screen overflow-x-hidden font-[Halyard Display]"
+  >
     <CrossmintProviders client:load>
       <slot />
     </CrossmintProviders>
-    <MusicPlayerGlobal server:defer />
   </body>
 </html>
