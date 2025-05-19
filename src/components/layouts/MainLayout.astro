@@ -1,0 +1,31 @@
+---
+// Import styles
+import "../../styles/global.css";
+import SiteMetadata from "~components/global/SiteMetadata.astro";
+import CrossmintProviders from "~react/providers/CrossmintProvider.tsx";
+import MusicPlayerGlobal from "~/components/global/MusicPlayerGlobal.astro";
+
+// Props interface
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+// Default metadata
+const {
+  title = "StreamFi - New Music Daily: Discover. Own. Connect.",
+  description = "Discover music without limits",
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <SiteMetadata title={title} description={description} />
+  </head>
+  <body class="bg-black relative w-screen overflow-x-hidden font-[Halyard Display]">
+    <CrossmintProviders client:load>
+      <slot />
+    </CrossmintProviders>
+    <MusicPlayerGlobal server:defer />
+  </body>
+</html>
